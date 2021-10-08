@@ -20,6 +20,12 @@ const userSchema = new Schema(
       required: true,
       minlength: 6,
     },
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
+      },
+    ],
   },
   {
     toJSON: {
