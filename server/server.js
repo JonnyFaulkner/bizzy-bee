@@ -33,8 +33,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
+// app.get("*", (req, res) => {
+//   res.status(404).sendFile(path.join(__dirname, "./public/404.html"));
+// });
+
 app.get("*", (req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "./public/404.html"));
+  res.sendFile(__dirname, '/client/public/');
 });
 
 db.once("open", () => {
