@@ -24,7 +24,7 @@ function Nav() {
 
     function showNavigation() {
 
-        if (Auth.loggedIn()) {
+        if (!Auth.loggedIn()) {
             return (
                 <Menu>
                     <MenuButton as={Avatar} mr="4" bg="brand.200" />
@@ -38,9 +38,12 @@ function Nav() {
         } else {
             return (
                 <Box>
-                    <Button color="brand.100" bg="brand.200" mr="4" to="/login">Login</Button>
-
-                    <Button color="brand.100" bg="brand.200" mr="2" to="/signup">Signup</Button>
+                    <Link as={Link} to="/login" >
+                        <Button color="brand.100" bg="brand.200" mr="4">Login</Button>
+                    </Link>
+                    <Link as={Link} to="/signup">
+                        <Button color="brand.100" bg="brand.200" mr="2">Signup</Button>
+                    </Link>
                 </Box>
             )
         }
