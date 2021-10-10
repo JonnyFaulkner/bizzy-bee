@@ -44,6 +44,10 @@ app.get("/secret", async (req, res) => {
   const intent = res.json({ client_secret: intent.client_secret }); // ... Fetch or create the PaymentIntent
 });
 
+app.get("*", (req, res) => {
+  res.sendFile(__dirname, "/client/public/");
+});
+
 // db.once("open", () => {
 app.listen(PORT, () => {
   console.log(`API server running on port ${PORT}!`);
