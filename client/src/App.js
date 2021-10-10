@@ -12,6 +12,7 @@ import { setContext } from '@apollo/client/link/context';
 import { ChakraProvider } from "@chakra-ui/react"
 import theme from "./theme"
 import Nav from "./components/Nav"
+import Home from "./pages/Home"
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -38,6 +39,7 @@ function App() {
       <ChakraProvider theme={theme}>
         <Router>
           <Nav />
+          <Route exact path="/" component={Home} />
         </Router>
       </ChakraProvider>
     </ApolloProvider>
