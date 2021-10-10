@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const createPaymentIntent = require("./models/payment");
 const env = require("dotenv").config({ path: "../.env" });
@@ -29,6 +30,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
@@ -38,7 +40,6 @@ if (process.env.NODE_ENV === "production") {
 
 app.get("/secret", async (req, res) => {
   const intent = await createPaymentIntent();
-  console.log(intent);
   res.json({ client_secret: intent.client_secret });
 });
 
