@@ -15,10 +15,8 @@ import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
-    BreadcrumbSeparator,
 } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import Home from "../../pages/Home"
 
 function Nav() {
 
@@ -73,7 +71,7 @@ function Nav() {
                         </BreadcrumbItem>
 
                         <BreadcrumbItem>
-                            <BreadcrumbLink href="#">Contact</BreadcrumbLink>
+                            <BreadcrumbLink href="#">Donate</BreadcrumbLink>
                         </BreadcrumbItem>
                     </Breadcrumb>
                 </Box>
