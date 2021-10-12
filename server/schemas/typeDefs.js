@@ -5,6 +5,8 @@ type User {
     _id: ID
     username: String
     email: String
+    posts: [Post]
+    reviewCount: Int
 }
 
 type Auth {

@@ -1,4 +1,4 @@
-const { User, Post } = require('../models');
+const { User, Post } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -6,23 +6,22 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({}).select("-__v -password")
-        .populate('posts');
+        const userData = await User.findOne({})
+          .select("-__v -password")
+          .populate("posts");
 
         return userData;
       }
       throw new AuthenticationError("Not logged in");
     },
     users: async () => {
-        return User.find()
-            .select("-__v -password")
-            .populate('posts');
+      return User.find().select("-__v -password").populate("posts");
     },
     user: async (parent, { username }) => {
-        return User.findOne({ username })
-            .select("-__v -password")
-            .populate('posts');
-    }
+      return User.findOne({ username })
+        .select("-__v -password")
+        .populate("posts");
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -47,6 +46,24 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addPost: async (parent, args, context) => {
+      if (context.user) {
+        const post = await Post.create({
+          ...args,
+          username: context.user.username,
+        });
+
+        await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $push: { posts: post._id } },
+            { new: true }
+        );
+
+        return post;
+      }
+      
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };
