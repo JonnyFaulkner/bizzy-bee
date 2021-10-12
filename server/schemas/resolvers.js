@@ -1,13 +1,13 @@
 const { User, Post } = require('../models');
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
-// const mongoose = require("mongoose");
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        const userData = await User.findOne({}).select("-__v -password");
+        const userData = await User.findOne({}).select("-__v -password")
+        .populate('posts');
 
         return userData;
       }
@@ -15,11 +15,13 @@ const resolvers = {
     },
     users: async () => {
         return User.find()
-            .select("-__v -password");
+            .select("-__v -password")
+            .populate('posts');
     },
     user: async (parent, { username }) => {
         return User.findOne({ username })
-            .select("-__v -password");
+            .select("-__v -password")
+            .populate('posts');
     }
   },
   Mutation: {
