@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === "production") {
 // });
 
 app.get("*", (req, res) => {
-  res.sendFile(__dirname, '/client/public/');
+  res.sendFile(__dirname, "/client/public/");
 });
 
 db.once("open", () => {
