@@ -1,10 +1,16 @@
 import React from 'react';
+import theme from "../theme";
+import {
+    Container,
+    Box
+} from "@chakra-ui/react"
+import Bulletin from "../components/Bulletin"
 
 const Home = () => {
     return (
-        <div className="container">
-
-        </div>
+        <Container maxW="container.xl" centerContent mt="5" >
+            <Bulletin />
+        </Container>
     )
 }
 
