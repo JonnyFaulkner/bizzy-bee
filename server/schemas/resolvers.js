@@ -22,6 +22,10 @@ const resolvers = {
         .select("-__v -password")
         .populate("posts");
     },
+    posts: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Post.find(params).sort({ createdAt: -1 });
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -55,15 +59,28 @@ const resolvers = {
         });
 
         await User.findByIdAndUpdate(
-            { _id: context.user._id },
-            { $push: { posts: post._id } },
-            { new: true }
+          { _id: context.user._id },
+          { $push: { posts: post._id } },
+          { new: true }
         );
 
         return post;
       }
-      
+
       throw new AuthenticationError("You need to be logged in!");
+    },
+    addReview: async (parent, { postId, reviewBody, name }) => {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          {
+            $addToSet: {
+              reviews: { reviewBody, name },
+            },
+          },
+          { new: true }
+        );
+
+        return updatedPost;
     },
   },
 };
