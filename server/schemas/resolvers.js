@@ -70,17 +70,17 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     addReview: async (parent, { postId, reviewBody, name }) => {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $addToSet: {
-              reviews: { reviewBody, name },
-            },
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: postId },
+        {
+          $addToSet: {
+            reviews: { reviewBody, name },
           },
-          { new: true }
-        );
+        },
+        { new: true }
+      );
 
-        return updatedPost;
+      return updatedPost;
     },
   },
 };
