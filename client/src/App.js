@@ -14,7 +14,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 import Nav from "./components/Nav";
 import Profile from "./pages/Profile";
-import Payments from "./components/Stripe/Payments";
 import Home from "./pages/Home";
 
 const httpLink = createHttpLink({
@@ -42,9 +41,10 @@ function App() {
       <ChakraProvider theme={theme}>
         <Router>
           <Nav />
-          <Profile />
-          <Payments />
-          <Route exact path="/" component={Home} />
+          <Switch>
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/" component={Home} />
+          </Switch>
         </Router>
       </ChakraProvider>
     </ApolloProvider>
