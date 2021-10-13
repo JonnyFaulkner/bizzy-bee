@@ -1,7 +1,8 @@
 import React from "react";
 import {
     Grid,
-    GridItem
+    GridItem,
+    Text
 } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import theme from "../../theme"
@@ -18,12 +19,13 @@ function Bulletin() {
                 border="solid"
                 borderWidth="thin"
                 borderColor="brand.500"
-                bgGradient="linear(to-r, brand.100, brand.200"
+                bg="brand.100"
             >
-                <GridItem colSpan={3} m="4" >Some text</GridItem>
-                <GridItem colSpan={2} m="4" >Some Name</GridItem>
-                <GridItem colSpan={3} m="4" />
-                <GridItem colSpan={2} m="4" >Some Date</GridItem>
+                <GridItem colSpan={3} rowSpan="2" mr="2" ml="2" >
+                    <Text fontSize="lg">Title</Text>
+                </GridItem>
+                <GridItem colSpan={2} mb="4" border="solid" >Some Name</GridItem>
+                <GridItem colSpan={2} mb="4" >Some Date</GridItem>
             </Grid>
         </Link >
     )
