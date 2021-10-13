@@ -5,28 +5,28 @@ const createPaymentIntent = require("./models/payment");
 const env = require("dotenv").config({ path: "../.env" });
 const { ApolloServer } = require("apollo-server-express");
 
-// const { typeDefs, resolvers } = require("./schemas");
-// const db = require("./config/connection");
+const { typeDefs, resolvers } = require("./schemas");
+const db = require("./config/connection");
 const { authMiddleware } = require("./utils/auth");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// const startServer = async () => {
-//   const server = new ApolloServer({
-//     typeDefs,
-//     resolvers,
-//     context: authMiddleware,
-//   });
+const startServer = async () => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware,
+  });
 
-//   await server.start();
+  await server.start();
 
-//   server.applyMiddleware({ app });
+  server.applyMiddleware({ app });
 
-//   console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-// };
+  console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+};
 
-// startServer();
+startServer();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
