@@ -19,17 +19,20 @@ import {
 import { Link } from "react-router-dom"
 
 function Nav() {
-
+    const logout = event => {
+        event.preventDefault()
+        Auth.logout();
+    }
     function showNavigation() {
 
-        if (!Auth.loggedIn()) {
+        if (Auth.loggedIn()) {
             return (
                 <Menu>
-                    <MenuButton as={Avatar} mr="4" bg="brand.200" />
+                    <MenuButton as={Avatar} mr="4" bg="brand.200" color="brand.100" />
                     <MenuList bg="brand.500">
                         <MenuItem><Link as={Link} to="/settings">Settings</Link></MenuItem>
                         <MenuItem><Link as={Link} to="/user">Profile</Link></MenuItem>
-                        <Button color="brand.100" bg="brand.200" ml="2" >Logout</Button>
+                        <Button color="brand.100" bg="brand.200" ml="2" onClick={logout} >Logout</Button>
                     </MenuList>
                 </Menu>
             )
