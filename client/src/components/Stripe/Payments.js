@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import CheckoutForm from "./CheckoutForm";
 
 function Payments() {
   const [secret, setSecret] = useState();
 
-  useState(() => {
-    const response = fetch("http://localhost:3001/secret")
+  useEffect(() => {
+    fetch("http://localhost:3001/secret")
       .then(function (response) {
         return response.json();
       })
@@ -17,14 +18,16 @@ function Payments() {
   }, []);
 
   if (!secret) {
-    console.log("loading");
+    console.log("Loading...");
   } else {
     console.log(secret);
   }
 
+  if (!secret) return <h4>Loading...</h4>;
+
   return (
     <div>
-      <h1>Payments</h1>
+      <CheckoutForm secret={secret} />
     </div>
   );
 }

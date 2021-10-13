@@ -12,7 +12,7 @@ import { setContext } from "@apollo/client/link/context";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 import Nav from "./components/Nav";
-import Payments from "./components/Payments";
+import Payments from "./components/Stripe/Payments";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
