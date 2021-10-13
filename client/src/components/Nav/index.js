@@ -26,7 +26,7 @@ function Nav() {
 
     function showNavigation() {
 
-        if (!Auth.loggedIn()) {
+        if (Auth.loggedIn()) {
             return (
                 <Menu>
                     <MenuButton as={Avatar} mr="4" bg="brand.200" />
