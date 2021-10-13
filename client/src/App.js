@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -12,7 +13,7 @@ import { setContext } from "@apollo/client/link/context";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 import Nav from "./components/Nav";
-import Payments from "./components/Stripe/Payments";
+import Profile from "./pages/Profile";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -39,7 +40,7 @@ function App() {
       <ChakraProvider theme={theme}>
         <Router>
           <Nav />
-          <Payments />
+          <Profile />
         </Router>
       </ChakraProvider>
     </ApolloProvider>
