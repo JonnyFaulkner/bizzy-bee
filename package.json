@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/JonnyFaulkner/bizzy-bee#readme",
   "dependencies": {
-    "concurrently": "^6.3.0"
+    "concurrently": "^6.3.0",
+    "dotenv": "^10.0.0",
+    "stripe": "^8.179.0"
   }
 }
