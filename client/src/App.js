@@ -39,9 +39,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ChakraProvider theme={theme}>
+      <ChakraProvider theme={theme} >
         <Router>
           <Nav />
+
           <Switch>
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/" component={Home} />

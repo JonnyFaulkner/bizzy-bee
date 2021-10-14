@@ -79,3 +79,13 @@ export const QUERY_POSTS = gql`
     }
   }
 `;
+
+export const QUERY_ALL_POSTS = gql`
+  query allPosts {
+    allPosts {
+      _id
+      postText
+      createdAt
+    }
+  }
+`
