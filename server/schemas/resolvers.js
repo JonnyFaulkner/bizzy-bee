@@ -26,6 +26,9 @@ const resolvers = {
       const params = username ? { username } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
+    allPosts: () => {
+      return Post.find().sort({ createdAt: -1 })
+    }
   },
   Mutation: {
     login: async (parent, { email, password }) => {
