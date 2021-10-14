@@ -1,7 +1,10 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import Payments from "../components/Stripe/Payments";
 import { QUERY_ME } from "../utils/queries";
+import { Redirect, useParams } from 'react-router-dom';
+import PostList from '../components/Posts.js';
+import PostForm from "../components/Cards";
 
 const Profile = () => {
   const { loading, error, data } = useQuery(QUERY_ME);

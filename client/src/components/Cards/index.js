@@ -1,74 +1,86 @@
-import React from "react";
+import React, {useState} from "react";
 // import Image from 'next/image';
-import Image from "@chakra-ui/react"
+import {Input} from "@chakra-ui/react"
+import { ADD_POST } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
+// import {FcLock} from 'react-icon/fc';
+
 import {
-  Box,
-  Center,
-  Heading,
+  Button,
   Text,
-  Stack,
-  Avatar,
-  useColorModeValue,
+  Stack
 } from '@chakra-ui/react';
 
-export default function BlogPostWithImage() {
+
+const PostForm = () => {
+// export default function BlogPostWithImage() {
+  const [formText, setText] = useState('');
+  
+  const [ addPost, {error}] = useMutation(ADD_POST, {
+    update(cache, {data: {addPost}}) {
+      try {
+        const {posts} = cache.readQuery({ query: QUERY_POSTS });
+
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { posts: [addPost, ...posts]}
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      const {me} = cache.readQuery({query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: {...me, posts: [...me.posts, addPost]}}
+      });
+    }
+  });
+
+  const handleChange = event => {
+    if (event.target.value.length) {
+      setText(event.target.value);
+    }
+  };
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      await addPost({
+        variables: {formText}
+      });
+      setText('');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
   return (
-    <Center py={6}>
-      <Box
-        maxW={'445px'}
-        w={'full'}
-        bg={useColorModeValue('white', 'gray.900')}
-        boxShadow={'2xl'}
-        rounded={'md'}
-        p={6}
-        overflow={'hidden'}>
-        <Box
-          h={'210px'}
-          bg={'gray.100'}
-          mt={-6}
-          mx={-6}
-          mb={6}
-          pos={'relative'}>
-          {/* <Image
-            src={
-              'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            }
-            layout={'fill'}
-          /> */}
-        </Box>
-        <Stack>
-          <Text
-            color={'green.500'}
-            textTransform={'uppercase'}
-            fontWeight={800}
-            fontSize={'sm'}
-            letterSpacing={1.1}>
-            Blog
-          </Text>
-          <Heading
-            color={useColorModeValue('gray.700', 'white')}
-            fontSize={'2xl'}
-            fontFamily={'body'}>
-            Boost your conversion rate
-          </Heading>
-          <Text color={'gray.500'}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum.
-          </Text>
+    <form onSubmit={handleFormSubmit}>
+    <Stack p="4" boxShadow="lg" m="4" borderRadius="sm">
+      <Stack direction="row" alignItems="center">
+        <Text fontWeight="semibold">Advertisement</Text>
+        {/* <FcLock /> */}
+      </Stack>
+
+      <Stack
+        direction={{ base: 'column', md: 'row' }}
+        justifyContent="space-between">
+        <Input 
+          type='text' 
+          value={formText} 
+          onChange={handleChange} 
+        />
+        <Stack direction={{ base: 'column', md: 'row' }}>
+          <Button colorScheme="green">POST</Button>
         </Stack>
-        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <Avatar
-            // src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-            // alt={'Author'}
-          />
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>Achim Rolle</Text>
-            <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
-          </Stack>
-        </Stack>
-      </Box>
-    </Center>
+      </Stack>
+    </Stack>
+    </form>
   );
 }
+
+export default PostForm;
