@@ -14,6 +14,8 @@ import theme from "./theme";
 import Nav from "./components/Nav";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -43,6 +45,8 @@ function App() {
           <Switch>
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/" component={Home} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
           </Switch>
         </Router>
       </ChakraProvider>

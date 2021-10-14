@@ -19,8 +19,14 @@ import {
 import { Link } from "react-router-dom";
 
 function Nav() {
+
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout();
+  }
+
   function showNavigation() {
-    if (!Auth.loggedIn()) {
+    if (Auth.loggedIn()) {
       return (
         <Menu>
           <MenuButton as={Avatar} mr="4" bg="brand.200" />
@@ -30,7 +36,7 @@ function Nav() {
               <Link to="/profile">Account</Link>
             </MenuItem>
             <Button color="brand.100" bg="brand.200" ml="2">
-              Logout
+              <a href="/" onClick={logout}> Logout </a>
             </Button>
           </MenuList>
         </Menu>
