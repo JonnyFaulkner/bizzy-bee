@@ -38,12 +38,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ChakraProvider theme={theme}>
+      <ChakraProvider theme={theme} >
         <Router>
           <Nav />
 
-          <Payments />
-        <Route exact path="/" component={Home} />
+          {/* <Payments /> */}
+          <Route exact path="/" component={Home} />
 
         </Router>
       </ChakraProvider>

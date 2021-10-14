@@ -53,7 +53,7 @@ function Nav() {
 
     return (
 
-        <Box w="100%" h="100px" bgGradient="linear(to-r, brand.100, brand.200, brand.100)">
+        <Box w="100%" h="100px" bg="brand.100">
             <Flex>
                 <Box>
                     <Link to="/">
