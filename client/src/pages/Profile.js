@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import Payments from "../components/Stripe/Payments";
 import { QUERY_ME } from "../utils/queries";
 import { Box, Container, Text, Divider } from "@chakra-ui/react";
