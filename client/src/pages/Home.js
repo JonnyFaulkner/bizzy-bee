@@ -29,7 +29,6 @@ const Home = () => {
                 <Bulletin />
                 <Bulletin />
                 <Bulletin />
-
             </Container>
             <Container
                 maxWidth="container.xl"
