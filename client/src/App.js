@@ -1,23 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  HttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-
 
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 import Nav from "./components/Nav";
-import Payments from "./components/Stripe/Payments";
-import Home from "./pages/Home"
+import Profile from "./pages/Profile";
+import Home from "./pages/Home";
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "http://localhost:3001/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -31,7 +30,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(HttpLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
@@ -41,10 +40,10 @@ function App() {
       <ChakraProvider theme={theme}>
         <Router>
           <Nav />
-
-          <Payments />
-        <Route exact path="/" component={Home} />
-
+          <Switch>
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/" component={Home} />
+          </Switch>
         </Router>
       </ChakraProvider>
     </ApolloProvider>
