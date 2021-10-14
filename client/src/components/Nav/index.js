@@ -29,11 +29,11 @@ function Nav() {
         if (Auth.loggedIn()) {
             return (
                 <Menu>
-                    <MenuButton as={Avatar} mr="4" bg="brand.200" />
+                    <MenuButton as={Avatar} mr="4" bg="brand.200" color="brand.100" />
                     <MenuList bg="brand.500">
-                        <MenuItem>Settings</MenuItem>
-                        <MenuItem>Account</MenuItem>
-                        <Button color="brand.100" bg="brand.200" ml="2" href="/" onClick={logout} >Logout</Button>
+                        <MenuItem><Link as={Link} to="/settings">Settings</Link></MenuItem>
+                        <MenuItem><Link as={Link} to="/user">Profile</Link></MenuItem>
+                        <Button color="brand.100" bg="brand.200" ml="2" onClick={logout} >Logout</Button>
                     </MenuList>
                 </Menu>
             )
@@ -64,21 +64,6 @@ function Nav() {
                     <Input placeholder="Search" size="lg" maxWidth="100%" bg="brand.300" />
                 </Box>
                 <Spacer />
-                <Box display="flex" alignItems="center">
-                    <Breadcrumb separator='' color="brand.300" fontSize="3xl">
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                        </BreadcrumbItem>
-
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="#">About</BreadcrumbLink>
-                        </BreadcrumbItem>
-
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="#">Donate</BreadcrumbLink>
-                        </BreadcrumbItem>
-                    </Breadcrumb>
-                </Box>
                 <Spacer />
                 <Box display="flex" alignItems="center">
                     {showNavigation()}
