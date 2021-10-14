@@ -30,7 +30,7 @@ function Nav() {
             return (
                 <Menu>
                     <MenuButton as={Avatar} mr="4" bg="brand.200" color="brand.100" />
-                    <MenuList bg="brand.500">
+                    <MenuList bg="brand.100" borderColor="brand.200">
                         <MenuItem><Link as={Link} to="/settings">Settings</Link></MenuItem>
                         <MenuItem><Link as={Link} to="/user">Profile</Link></MenuItem>
                         <Button color="brand.100" bg="brand.200" ml="2" onClick={logout} >Logout</Button>
