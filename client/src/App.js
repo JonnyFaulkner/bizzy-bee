@@ -42,19 +42,13 @@ function App() {
       <ChakraProvider theme={theme} >
         <Router>
           <Nav />
-<<<<<<< HEAD
 
-          {/* <Payments /> */}
-          <Route exact path="/" component={Home} />
-
-=======
           <Switch>
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
           </Switch>
->>>>>>> develop
         </Router>
       </ChakraProvider>
     </ApolloProvider>
