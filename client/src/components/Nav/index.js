@@ -43,18 +43,27 @@ function Nav() {
       );
     } else {
       return (
-        <Box>
-          <Link as={Link} to="/login">
-            <Button color="brand.100" bg="brand.200" mr="4">
-              Login
-            </Button>
-          </Link>
-          <Link as={Link} to="/signup">
-            <Button color="brand.100" bg="brand.200" mr="2">
-              Signup
-            </Button>
-          </Link>
-        </Box>
+        <Menu>
+          <MenuButton as={Avatar} mr="4" bg="brand.200" />
+          <MenuList bg="brand.500">
+            <MenuItem>Settings</MenuItem>
+            <MenuItem>
+              <Link to="/profile">Account</Link>
+            </MenuItem>
+            <MenuItem>
+                <Link as={Link} to="/login">
+                <Button color="brand.100" bg="brand.200" mr="4">
+                  Login
+                </Button>
+              </Link>
+            </MenuItem>
+            <Link as={Link} to="/signup">
+                <Button color="brand.100" bg="brand.200" mr="2">
+                   Signup
+                </Button>
+              </Link>
+            </MenuList>
+        </Menu>
       );
     }
   }
