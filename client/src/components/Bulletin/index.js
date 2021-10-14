@@ -10,10 +10,11 @@ import { useQuery } from '@apollo/client'
 import { QUERY_ALL_POSTS } from '../../utils/queries'
 
 function Bulletin() {
-    // const { loading, data } = useQuery(QUERY_ALL_POSTS)
+    const { loading, data } = useQuery(QUERY_ALL_POSTS)
 
-    // const post = data?.post
+    const post = data
 
+    console.log(post)
     return (
         <Grid
             w="50%"

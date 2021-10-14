@@ -26,7 +26,7 @@ const resolvers = {
       const params = username ? { username } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
-    allPosts: () => {
+    allPosts: async () => {
       return Post.find().sort({ createdAt: -1 })
     }
   },

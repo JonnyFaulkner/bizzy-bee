@@ -86,6 +86,13 @@ export const QUERY_ALL_POSTS = gql`
       _id
       postText
       createdAt
+      reviewCount
+      reviews {
+        _id
+        reviewBody
+        createdAt
+        name
+      }
     }
   }
 `
