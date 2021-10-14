@@ -9,6 +9,7 @@ import {
     Divider
 } from "@chakra-ui/react"
 import Bulletin from "../components/Bulletin"
+import BlogPostWithImage from '../components/Cards';
 
 const Home = () => {
     return (
@@ -26,6 +27,7 @@ const Home = () => {
             >
                 <Text color="brand.300" fontSize="5xl" fontStyle="oblique" >New Bulletins:</Text>
                 <Divider />
+                <BlogPostWithImage/>
             </Container>
             <Container
                 maxWidth="container.xl"
