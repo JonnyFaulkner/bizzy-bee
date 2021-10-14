@@ -1,28 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useQuery } from "@apollo/client";
 import Payments from "../components/Stripe/Payments";
+import { QUERY_ME } from "../utils/queries";
 
 const Profile = () => {
-  const [userInfo, setUserInfo] = useState();
+  const { loading, error, data } = useQuery(QUERY_ME);
 
-  useEffect(() => {
-    fetch("{USER_ENDPOINT}")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setUserInfo(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  if (loading) return <h4>Loading...</h4>;
+  if (error) return `Error: ${error.message}`;
 
-  // if (!userInfo) return <h4>Loading...</h4>;
+  console.log(data);
 
   return (
     <div>
-      {/* {userInfo} */}
       <Payments />
     </div>
   );

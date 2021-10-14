@@ -17,12 +17,6 @@ function Payments() {
       });
   }, []);
 
-  if (!secret) {
-    console.log("Loading...");
-  } else {
-    console.log(secret);
-  }
-
   if (!secret) return <h4>Loading...</h4>;
 
   return (
