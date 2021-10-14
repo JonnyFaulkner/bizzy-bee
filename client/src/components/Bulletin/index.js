@@ -27,17 +27,14 @@ function Bulletin() {
             borderWidth="3px"
             borderColor="brand.100"
             borderStyle="double"
-            bg="brand.300"
-            opacity="70%"
-            _hover={{
-                opacity: "100%"
-            }}
+            bg="brand.200"
+
         >
-            <GridItem colSpan={3} rowSpan="2" m="2" border="solid" borderWidth="1px" borderColor="brand.500" >
-                <Text fontSize="lg" color="brand.200" ></Text>
+            <GridItem colSpan={3} rowSpan="2" m="2"  >
+                <Text fontSize="lg" color="brand.300" >This is a Bulletin</Text>
             </GridItem>
-            <GridItem colSpan={2} m="2" border="solid" borderStyle="ridge" borderWidth="1px" borderColor="brand.500" >Some Name</GridItem>
-            <GridItem colSpan={2} m="2" border="solid" borderWidth="1px" borderColor="brand.500">Some Date</GridItem>
+            <GridItem colSpan={2} m="2" ><Text fontSize="lg" color="brand.300">Some Name</Text></GridItem>
+            <GridItem colSpan={2} m="2" ><Text fontSize="lg" color="brand.300">Created at: 10/13/14</Text></GridItem>
         </Grid>
     )
 }

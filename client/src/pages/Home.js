@@ -27,6 +27,9 @@ const Home = () => {
                 <Text color="brand.300" fontSize="5xl" fontStyle="oblique" >New Bulletins:</Text>
                 <Divider />
                 <Bulletin />
+                <Bulletin />
+                <Bulletin />
+
             </Container>
             <Container
                 maxWidth="container.xl"
