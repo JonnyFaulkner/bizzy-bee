@@ -62,7 +62,7 @@ const PostForm = () => {
     <form onSubmit={handleFormSubmit}>
     <Stack p="4" boxShadow="lg" m="4" borderRadius="sm">
       <Stack direction="row" alignItems="center">
-        <Text fontWeight="semibold">Advertisement</Text>
+        <Text fontWeight="semibold" color="brand.300" >Post Bulletin:</Text>
         {/* <FcLock /> */}
       </Stack>
 

@@ -9,8 +9,22 @@ import {
     Divider
 } from "@chakra-ui/react"
 import Bulletin from "../components/Bulletin"
+import PostForm from '../components/Cards';
+import { useQuery } from '@apollo/client';
+import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth';
+import PostList from '../components/Posts.js';
+
 
 const Home = () => {
+
+    const { loading, data } = useQuery(QUERY_POSTS);
+    const { data: userData } = useQuery(QUERY_ME);
+
+    const posts = data?.posts || []
+
+    const loggedIn = Auth.loggedIn();
+
     return (
         <Box bg="brand.200" boxSize="full">
             <Box w="100%" h="120px" bgGradient={["linear(to-b, brand.100, brand.200)"]} />
@@ -26,7 +40,14 @@ const Home = () => {
             >
                 <Text color="brand.300" fontSize="5xl" fontStyle="oblique" >New Bulletins:</Text>
                 <Divider />
-                <Bulletin />
+                <div >
+                    {loggedIn && (
+                        <div >
+                            <PostForm />
+                        </div>
+                    )}
+
+                </div>
                 <Bulletin />
                 <Bulletin />
             </Container>
@@ -42,7 +63,11 @@ const Home = () => {
             >
                 <Text color="brand.300" fontSize="5xl" fontStyle="oblique" >Most Reviewed:</Text>
                 <Divider />
+                <Bulletin />
+                <Bulletin />
             </Container>
+
+
         </Box >
     )
 }
