@@ -11,15 +11,15 @@ import {
 import Bulletin from "../components/Bulletin"
 import PostForm from '../components/Cards';
 import { useQuery } from '@apollo/client';
-import { QUERY_POSTS, QUERY_ME} from '../utils/queries';
+import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import PostList from '../components/Posts.js';
 
 
 const Home = () => {
 
-    const {loading, data} = useQuery(QUERY_POSTS);
-    const {data: userData} = useQuery(QUERY_ME);
+    const { loading, data } = useQuery(QUERY_POSTS);
+    const { data: userData } = useQuery(QUERY_ME);
 
     const posts = data?.posts || []
 
@@ -41,20 +41,15 @@ const Home = () => {
                 <Text color="brand.300" fontSize="5xl" fontStyle="oblique" >New Bulletins:</Text>
                 <Divider />
                 <div >
-        {loggedIn && (
-          <div >
-            <PostForm/>
-          </div>
-        )}
-        <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostList posts={posts} title="Some Feed for Thought(s)..." />
-          )}
-        </div>
+                    {loggedIn && (
+                        <div >
+                            <PostForm />
+                        </div>
+                    )}
 
-      </div>
+                </div>
+                <Bulletin />
+                <Bulletin />
             </Container>
             <Container
                 maxWidth="container.xl"
@@ -68,6 +63,8 @@ const Home = () => {
             >
                 <Text color="brand.300" fontSize="5xl" fontStyle="oblique" >Most Reviewed:</Text>
                 <Divider />
+                <Bulletin />
+                <Bulletin />
             </Container>
 
 
