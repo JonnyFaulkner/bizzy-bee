@@ -42,7 +42,7 @@
 - To start both servers run ```npm run start``` or ```npm run develop``` and application should now be running. Check package.json for other scripts.
 
 ## Preview
-![Preview](public/assets/preview.png)
+![Preview](client/public/assets/preview.png)
 
 ## Credit
 This app was made with love and hardwork by 
