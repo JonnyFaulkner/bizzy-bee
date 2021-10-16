@@ -2,6 +2,16 @@
 
 ## Table of Contents
 
+* [User Story](user-story)
+* [Up and Running](up-and-running)
+* [Preview](#preview)
+* [Credits](#credits)
+* [License](#license)
+* [Badges](#Badges)
+* [Contributing](#contributing)
+
+
+
 ### User Story
 
 - As a business owner I can sign up or login
@@ -30,3 +40,31 @@
 - Start your mongodb server by running ```brew services start mongodb-community@5.0``` in the terminal.
 - To stop run ```brew services stop mongodb-community@5.0``` in the terminal.
 - To start both servers run ```npm run start``` or ```npm run develop``` and application should now be running. Check package.json for other scripts.
+
+## Preview
+![Preview](public/assets/preview.png)
+
+## Credit
+This app was made with love and hardwork by 
+
+[Praise Opara](https://github.com/kingopara)
+
+[Randolph Davis](https://github.com/Rddavis1389)
+
+[Javier Dominguez](https://github.com/JaviD17)
+
+[Jonathan Faulkner](https://github.com/JonnyFaulkner)
+
+[Alexis Vega](https://github.com/axv50)
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+## Badges
+
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+
+## Contributing
+
+![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)
