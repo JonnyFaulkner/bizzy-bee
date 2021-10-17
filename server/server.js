@@ -34,10 +34,10 @@ app.use(cors());
 
 
 
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"))
+  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"))
 })
 
 // STRIPE API
@@ -50,7 +50,7 @@ app.get("/secret", async (req, res) => {
 //
 
 app.get("*", (req, res) => {
-  res.sendFile(__dirname, "client/public/");
+  res.sendFile(__dirname, "../client/public/");
 });
 
 if (process.env.NODE_ENV === "production") {
