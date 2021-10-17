@@ -32,9 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-}
+
 
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
@@ -54,6 +52,10 @@ app.get("/secret", async (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(__dirname, "/client/public/");
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
 db.once("open", () => {
   app.listen(PORT, () => {
