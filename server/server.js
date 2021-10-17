@@ -50,7 +50,7 @@ app.get("/secret", async (req, res) => {
 //
 
 app.get("*", (req, res) => {
-  res.sendFile(__dirname, "/client/public/");
+  res.sendFile(__dirname, "client/public/");
 });
 
 if (process.env.NODE_ENV === "production") {
